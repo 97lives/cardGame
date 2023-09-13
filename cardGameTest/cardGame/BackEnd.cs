@@ -44,15 +44,25 @@ namespace cardGame
     public class BackEnd
     {
         /// <summary>
-        /// hello
+        /// Calculates the total score based on a list of playing cards.
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        /// <exception cref="InvalidTriplicateJokerException"></exception>
-        /// <exception cref="InvalidDuplicateException"></exception>
-        /// <exception cref="InvalidCardRankException"></exception>
-        /// <exception cref="InvalidSuitException"></exception>
-        /// <exception cref="InvalidInputException"></exception>
+        /// <param name="input">A string containing a list of playing cards separated by commas (e.g., "2C,5D,KH").</param>
+        /// <returns>The total score calculated from the input cards.</returns>
+        /// <exception cref="InvalidTriplicateJokerException">
+        /// Thrown if there are three or more Jokers ("JR") in the input.
+        /// </exception>
+        /// <exception cref="InvalidDuplicateException">
+        /// Thrown if there are duplicate cards in the input (excluding Jokers).
+        /// </exception>
+        /// <exception cref="InvalidCardRankException">
+        /// Thrown if a card in the input has an invalid rank (not 2-9, T, J, Q, K, A).
+        /// </exception>
+        /// <exception cref="InvalidSuitException">
+        /// Thrown if a card in the input has an invalid suit (not C, D, H, S).
+        /// </exception>
+        /// <exception cref="InvalidInputException">
+        /// Thrown if the input format is invalid or contains unrecognized cards.
+        /// </exception>
         public int CalculateTotalScore(string input)
         {
             Dictionary<char, int> cardValues = new Dictionary<char, int>
