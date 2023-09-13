@@ -88,6 +88,8 @@ namespace cardGame
 
             int jokerCount = cards.Count(card => card == "JR");
 
+            int jokerMultiplyer = 0;
+
             if (jokerCount >= 3)
             {
                 throw new InvalidTriplicateJokerException();
@@ -105,6 +107,7 @@ namespace cardGame
                 if (card == "JR")
                 {
                     totalScore += 0;
+                    jokerMultiplyer += 1;
                 }
                 else if (card.Length == 2)
                 {
@@ -143,6 +146,12 @@ namespace cardGame
                 {
                     throw new InvalidInputException($"Invalid card format: {card}");
                 }
+            }
+
+            while(jokerMultiplyer > 0)
+            {
+                totalScore *= 2;
+                jokerMultiplyer -= 1;
             }
 
             return totalScore;

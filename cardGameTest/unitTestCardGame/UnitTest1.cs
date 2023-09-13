@@ -13,6 +13,10 @@ namespace cardGame.Tests
         [InlineData("2C,5D,KH", 51)]
         [InlineData("2H,JD,4S", 44)]
         [InlineData("JR", 0)]
+        [InlineData("JR,JR", 0)]
+        [InlineData("2C,JR", 4)]
+        [InlineData("JR,2C,JR", 8)]
+
         public void CalculateTotalScore_Returns(string input, int expectedScore)
         {
             // Arrange
